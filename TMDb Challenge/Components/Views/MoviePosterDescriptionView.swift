@@ -24,7 +24,8 @@ class MoviePosterDescriptionView: UIView {
         let label = UILabel()
         label.text = "Movie Title"
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.textColor = UIColor.tmdb.primaryTextColor
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -34,6 +35,7 @@ class MoviePosterDescriptionView: UIView {
         let label = UILabel()
         label.text = "Movie Description"
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        label.textColor = UIColor.tmdb.secondaryTextColor
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
