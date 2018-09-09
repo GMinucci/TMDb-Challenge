@@ -7,17 +7,12 @@
 //
 
 import UIKit
-
-protocol MovieDetailWorkerLogic {
-
-}
+import PromiseKit
 
 class MovieDetailWorker {
 
-    private let service: MovieDetailWorkerLogic
-
-    init(service: MovieDetailWorkerLogic) {
-        self.service = service
+    func getMovieDetails(id: Int) -> Promise<MovieDetailModel> {
+        return MoviesAPIService.getMovieDetail(id: id)
     }
 
 }

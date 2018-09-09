@@ -9,7 +9,8 @@
 import UIKit
 
 protocol MovieDetailPresentationLogic {
-
+    func getMovieDetailsSuccess(response: MovieDetail.Get.Response.Success)
+    func getMovieDetailsFailure(response: MovieDetail.Get.Response.Failure)
 }
 
 class MovieDetailPresenter: MovieDetailPresentationLogic {
@@ -17,4 +18,14 @@ class MovieDetailPresenter: MovieDetailPresentationLogic {
     // Var's
     weak var viewController: MovieDetailDisplayLogic?
 
+    func getMovieDetailsSuccess(response: MovieDetail.Get.Response.Success) {
+        let viewModel = MovieDetail.Get.ViewModel.Success(title: response.movie.title)
+        viewController?.getMovieDetailsSuccess(viewModel: viewModel)
+    }
+    
+    func getMovieDetailsFailure(response: MovieDetail.Get.Response.Failure) {
+        let viewModel = MovieDetail.Get.ViewModel.Failure(message: response.error.localizedDescription)
+        viewController?.getMovieDetailsFailure(viewModel: viewModel)
+    }
+    
 }

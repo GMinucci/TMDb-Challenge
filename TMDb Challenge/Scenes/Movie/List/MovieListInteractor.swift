@@ -51,7 +51,7 @@ class MovieListInteractor: MovieListBusinessLogic, MovieListDataStore {
         let requestedPage = nextPage ?? 1
         isFetching = true
         worker.getUpcomingMovies(page: requestedPage)
-            .done { result in
+            .done { (result) in
                 if requestedPage + 1 <= result.totalPages {
                     self.nextPage = requestedPage + 1
                 }
@@ -64,7 +64,7 @@ class MovieListInteractor: MovieListBusinessLogic, MovieListDataStore {
                 self.presenter?.getUpcomingMoviesSuccess(response: response)
                 self.isFetching = false
         }
-            .catch { error in
+            .catch { (error) in
                 let response = MovieList.List.Response.Failure(error: error)
                 self.presenter?.getUpcomingMoviesFailure(response: response)
                 self.isFetching = false

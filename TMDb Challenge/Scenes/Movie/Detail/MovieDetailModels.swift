@@ -9,5 +9,27 @@
 import UIKit
 
 enum MovieDetail {
-
+    enum Get {
+        
+        struct Request {
+        }
+        
+        enum Response {
+            struct Success {
+                let movie: MovieDetailModel
+            }
+            struct Failure {
+                let error: Error
+            }
+        }
+        
+        enum ViewModel {
+            struct Success {
+                let title: String
+            }
+            struct Failure {
+                let message: String
+            }
+        }
+    }
 }
