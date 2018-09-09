@@ -100,8 +100,7 @@
 		6836E6C82144B1B600017723 /* TMDb Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				6836E6CB2144B1B600017723 /* ViewController.swift */,
-				6836E6CD2144B1B600017723 /* Main.storyboard */,
+				6883180A2144B5A500E69D2E /* Scenes */,
 				6836E6EA2144B38400017723 /* Resources */,
 				6836E6E92144B34000017723 /* Support Files */,
 			);
@@ -133,6 +132,23 @@
 				6836E6D02144B1B700017723 /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		6883180A2144B5A500E69D2E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				6883180B2144B5B100E69D2E /* Mock */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		6883180B2144B5B100E69D2E /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				6836E6CB2144B1B600017723 /* ViewController.swift */,
+				6836E6CD2144B1B600017723 /* Main.storyboard */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		CD0CA9744B9CECA709E2CB7D /* Frameworks */ = {
@@ -474,7 +490,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PGFLRY3JL2;
 				INFOPLIST_FILE = "$(SRCROOT)/TMDb Challenge/Support Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.minucci.TMDb-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -490,7 +509,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PGFLRY3JL2;
 				INFOPLIST_FILE = "$(SRCROOT)/TMDb Challenge/Support Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.minucci.TMDb-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -507,7 +529,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PGFLRY3JL2;
 				INFOPLIST_FILE = "TMDb ChallengeTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.minucci.TMDb-ChallengeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -525,7 +551,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PGFLRY3JL2;
 				INFOPLIST_FILE = "TMDb ChallengeTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.minucci.TMDb-ChallengeTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
