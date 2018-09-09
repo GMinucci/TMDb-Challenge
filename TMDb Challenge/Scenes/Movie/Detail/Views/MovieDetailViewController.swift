@@ -28,6 +28,7 @@ class MovieDetailViewController: UIViewController {
     // Load
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
     }
 
     override func viewWillAppear(_ animated: Bool) {
