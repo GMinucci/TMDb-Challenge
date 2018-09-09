@@ -46,6 +46,7 @@ class MovieListTableViewCell: UITableViewCell {
     }
     
     private func setupUIComponents() {
+        selectionStyle = .none
         backgroundColor = .clear
         
         addSubview(cardContainer)
@@ -69,8 +70,11 @@ class MovieListTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        
+        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.cardContainer.transform = selected ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
+        })
+        
     }
 
 }
