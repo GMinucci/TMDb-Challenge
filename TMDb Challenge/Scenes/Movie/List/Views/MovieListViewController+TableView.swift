@@ -43,7 +43,14 @@ extension MovieListViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 1.2 * tableView.bounds.size.width
+        return tableView.bounds.size.width
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == movieList.count - 5 {
+            let request = MovieList.List.Request(mode: .next)
+            interactor?.getUpcomingMovies(request: request)
+        }
     }
     
 }

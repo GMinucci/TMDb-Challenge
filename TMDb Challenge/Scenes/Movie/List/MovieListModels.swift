@@ -23,6 +23,10 @@ enum MovieList {
                 let movieList: [MovieListModel]
             }
             
+            struct DismissLoading {
+                
+            }
+            
             struct Failure {
                 let error: Error
             }
@@ -38,6 +42,10 @@ enum MovieList {
             
             struct Success {
                 let movieList: [MovieViewModel]
+            }
+            
+            struct DismissLoading {
+                
             }
             
             struct Failure {

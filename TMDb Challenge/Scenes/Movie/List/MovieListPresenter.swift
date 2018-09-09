@@ -9,6 +9,7 @@
 import UIKit
 
 protocol MovieListPresentationLogic {
+    func dismissLoading(response: MovieList.List.Response.DismissLoading)
     func getUpcomingMoviesSuccess(response: MovieList.List.Response.Success)
     func getUpcomingMoviesFailure(response: MovieList.List.Response.Failure)
 }
@@ -28,6 +29,11 @@ class MovieListPresenter: MovieListPresentationLogic {
         })
         let viewModel = MovieList.List.ViewModel.Success(movieList: movieList)
         viewController?.getUpcomingMoviesSuccess(viewModel: viewModel)
+    }
+    
+    func dismissLoading(response: MovieList.List.Response.DismissLoading) {
+        let viewModel = MovieList.List.ViewModel.DismissLoading()
+        viewController?.dismissLoading(viewModel: viewModel)
     }
     
     func getUpcomingMoviesFailure(response: MovieList.List.Response.Failure) {

@@ -12,7 +12,6 @@ import PromiseKit
 class MovieListWorker {
 
     func getUpcomingMovies(page: Int?) -> Promise<MovieListResultsPageModel> {
-        print("REQUEST PAGE \(page)")
         return MoviesAPIService.getUpcomingMovies(page: page)
     }
     

@@ -25,21 +25,31 @@ class MovieListInteractor: MovieListBusinessLogic, MovieListDataStore {
     
     var movieList = [MovieListModel]()
     var nextPage: Int?
+    var isFetching = false
     
     func getUpcomingMovies(request: MovieList.List.Request) {
+        guard !isFetching else {
+            let response = MovieList.List.Response.DismissLoading()
+            presenter?.dismissLoading(response: response)
+            return
+        }
+        
         if request.mode == .load && movieList.count > 0 {
             // If the load mode is to just load content and already have content don't do anything
-            let response = MovieList.List.Response.Success(movieList: movieList)
-            presenter?.getUpcomingMoviesSuccess(response: response)
+            let response = MovieList.List.Response.DismissLoading()
+            presenter?.dismissLoading(response: response)
+            return
         }
         
         if request.mode == .next && nextPage == nil {
             // If the load mode is to load next page and there is no next page don't do anything
-            let response = MovieList.List.Response.Success(movieList: movieList)
-            presenter?.getUpcomingMoviesSuccess(response: response)
+            let response = MovieList.List.Response.DismissLoading()
+            presenter?.dismissLoading(response: response)
+            return
         }
         
         let requestedPage = nextPage ?? 1
+        isFetching = true
         worker.getUpcomingMovies(page: requestedPage)
             .done { result in
                 if requestedPage + 1 <= result.totalPages {
@@ -52,10 +62,12 @@ class MovieListInteractor: MovieListBusinessLogic, MovieListDataStore {
                 self.movieList.append(contentsOf: result.results)
                 let response = MovieList.List.Response.Success(movieList: self.movieList)
                 self.presenter?.getUpcomingMoviesSuccess(response: response)
+                self.isFetching = false
         }
             .catch { error in
                 let response = MovieList.List.Response.Failure(error: error)
                 self.presenter?.getUpcomingMoviesFailure(response: response)
+                self.isFetching = false
         }
     }
 

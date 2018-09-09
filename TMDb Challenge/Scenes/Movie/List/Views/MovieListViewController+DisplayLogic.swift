@@ -9,6 +9,7 @@
 import UIKit
 
 protocol MovieListDisplayLogic: class {
+    func dismissLoading(viewModel: MovieList.List.ViewModel.DismissLoading)
     func getUpcomingMoviesSuccess(viewModel: MovieList.List.ViewModel.Success)
     func getUpcomingMoviesFailure(viewModel: MovieList.List.ViewModel.Failure)
 }
@@ -18,6 +19,9 @@ extension MovieListViewController: MovieListDisplayLogic {
     func getUpcomingMoviesSuccess(viewModel: MovieList.List.ViewModel.Success) {
         self.movieList = viewModel.movieList
         tableView.reloadData()
+    }
+    
+    func dismissLoading(viewModel: MovieList.List.ViewModel.DismissLoading) {
     }
     
     func getUpcomingMoviesFailure(viewModel: MovieList.List.ViewModel.Failure) {
