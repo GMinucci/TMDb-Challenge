@@ -37,6 +37,10 @@ class MoviesAPIService: SessionManager {
         return error
     }
     
+    static func buildShareURL(movieID: Int) -> String {
+        return "themoviedb.org/movie/\(movieID)"
+    }
+    
     static func getUpcomingMovies(page: Int) -> Promise<MovieListResultsPageModel> {
         return Promise.init { seal in
             let request = MoviesRouter.list(page: page)

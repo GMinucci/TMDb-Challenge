@@ -11,6 +11,8 @@ import UIKit
 protocol MovieDetailPresentationLogic {
     func getMovieDetailsSuccess(response: MovieDetail.Get.Response.Success)
     func getMovieDetailsFailure(response: MovieDetail.Get.Response.Failure)
+    func shareMovieSuccess(response: MovieDetail.Share.Response.Success)
+    func shareMovieFailure(response: MovieDetail.Share.Response.Failure)
 }
 
 class MovieDetailPresenter: MovieDetailPresentationLogic {
@@ -63,6 +65,17 @@ class MovieDetailPresenter: MovieDetailPresentationLogic {
     func getMovieDetailsFailure(response: MovieDetail.Get.Response.Failure) {
         let viewModel = MovieDetail.Get.ViewModel.Failure(message: response.error.localizedDescription)
         viewController?.getMovieDetailsFailure(viewModel: viewModel)
+    }
+    
+    func shareMovieSuccess(response: MovieDetail.Share.Response.Success) {
+        let message = "Check out this awesome movie on " + MoviesAPIService.buildShareURL(movieID: response.movieID)
+        let viewModel = MovieDetail.Share.ViewModel.Success(message: message)
+        viewController?.shareMovieSuccess(viewModel: viewModel)
+    }
+    
+    func shareMovieFailure(response: MovieDetail.Share.Response.Failure) {
+        let viewModel = MovieDetail.Share.ViewModel.Failure(message: response.error.localizedDescription)
+        viewController?.shareMovieFailure(viewModel: viewModel)
     }
     
 }

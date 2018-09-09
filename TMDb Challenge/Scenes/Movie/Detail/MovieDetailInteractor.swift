@@ -10,6 +10,7 @@ import UIKit
 
 protocol MovieDetailBusinessLogic {
     func getMovieDetails(request: MovieDetail.Get.Request)
+    func shareMovie(request: MovieDetail.Share.Request)
 }
 
 protocol MovieDetailDataStore {
@@ -44,6 +45,17 @@ class MovieDetailInteractor: MovieDetailBusinessLogic, MovieDetailDataStore {
                 let response = MovieDetail.Get.Response.Failure(error: error)
                 self.presenter?.getMovieDetailsFailure(response: response)
         }
+    }
+    
+    func shareMovie(request: MovieDetail.Share.Request) {
+        guard let movieID = movieID else {
+            let error = NSError(domain: "MovieDetail", code: 1, userInfo: [NSLocalizedDescriptionKey: "Couldn't get any valid movie ID"])
+            let response = MovieDetail.Share.Response.Failure(error: error)
+            presenter?.shareMovieFailure(response: response)
+            return
+        }
+        let response = MovieDetail.Share.Response.Success(movieID: movieID)
+        presenter?.shareMovieSuccess(response: response)
     }
 
 }

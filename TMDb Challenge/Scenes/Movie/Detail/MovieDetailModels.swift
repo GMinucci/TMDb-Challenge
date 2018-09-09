@@ -10,7 +10,6 @@ import UIKit
 
 enum MovieDetail {
     enum Get {
-        
         struct Request {
         }
         
@@ -38,6 +37,31 @@ enum MovieDetail {
                 let posterImageURL: URL?
                 let info: [(String, [Info])]
             }
+            struct Failure {
+                let message: String
+            }
+        }
+    }
+    
+    enum Share {
+        struct Request {
+        }
+        
+        enum Response {
+            struct Success {
+                let movieID: Int
+            }
+            
+            struct Failure {
+                let error: Error
+            }
+        }
+        
+        enum ViewModel {
+            struct Success {
+                let message: String
+            }
+            
             struct Failure {
                 let message: String
             }

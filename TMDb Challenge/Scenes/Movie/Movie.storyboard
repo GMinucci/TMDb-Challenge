@@ -111,6 +111,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="skE-1J-DmI"/>
                     </view>
+                    <navigationItem key="navigationItem" id="NOj-pW-LL7">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="bsl-nz-6aV">
+                            <connections>
+                                <action selector="shareButtonAction:" destination="Kii-u2-DMt" id="vn8-2K-chB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="moviePosterHeadingView" destination="xJn-RF-pfz" id="PyO-N9-iyT"/>
                         <outlet property="moviewOverviewLabel" destination="nuK-XO-d9a" id="Ikn-3M-cRw"/>
@@ -141,7 +148,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Iw-wE-tzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="577" y="947"/>
+            <point key="canvasLocation" x="578" y="987"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="dDM-CI-e83">
@@ -161,6 +168,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pLT-FO-wBe"/>
+        <segue reference="yUt-34-j4Y"/>
     </inferredMetricsTieBreakers>
 </document>
