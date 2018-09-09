@@ -49,13 +49,13 @@ class MoviePosterDescriptionView: UIView {
     }
     
     private func setupUIComponents() {
-        backgroundColor = UIColor(white: 1.0, alpha: 0.9)
+        backgroundColor = UIColor(white: 1.0, alpha: 0.8)
         
         addSubview(posterImageView)
         posterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
         posterImageView.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
         posterImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
-        posterImageView.widthAnchor.constraint(equalTo: posterImageView.heightAnchor, multiplier: 9/16).isActive = true
+        posterImageView.widthAnchor.constraint(equalTo: posterImageView.heightAnchor, multiplier: 2/3).isActive = true
         
         addSubview(movieTitleLabel)
         movieTitleLabel.topAnchor.constraint(equalTo: posterImageView.topAnchor).isActive = true

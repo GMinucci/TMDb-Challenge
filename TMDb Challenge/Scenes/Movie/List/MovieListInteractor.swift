@@ -28,15 +28,28 @@ class MovieListInteractor: MovieListBusinessLogic, MovieListDataStore {
     
     func getUpcomingMovies(request: MovieList.List.Request) {
         if request.mode == .load && movieList.count > 0 {
-            // If the load mode is to just load content and already have content don't
-            // do anything
+            // If the load mode is to just load content and already have content don't do anything
             let response = MovieList.List.Response.Success(movieList: movieList)
             presenter?.getUpcomingMoviesSuccess(response: response)
         }
         
-        worker.getUpcomingMovies(page: nextPage)
-            .done { results in
-                self.movieList.append(contentsOf: results)
+        if request.mode == .next && nextPage == nil {
+            // If the load mode is to load next page and there is no next page don't do anything
+            let response = MovieList.List.Response.Success(movieList: movieList)
+            presenter?.getUpcomingMoviesSuccess(response: response)
+        }
+        
+        let requestedPage = nextPage ?? 1
+        worker.getUpcomingMovies(page: requestedPage)
+            .done { result in
+                if requestedPage + 1 <= result.totalPages {
+                    self.nextPage = requestedPage + 1
+                }
+                else {
+                    self.nextPage = nil
+                }
+                    
+                self.movieList.append(contentsOf: result.results)
                 let response = MovieList.List.Response.Success(movieList: self.movieList)
                 self.presenter?.getUpcomingMoviesSuccess(response: response)
         }

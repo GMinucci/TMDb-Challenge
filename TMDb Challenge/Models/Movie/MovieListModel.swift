@@ -8,6 +8,20 @@
 
 import Foundation
 
+struct MovieListResultsPageModel: Decodable {
+    let page: Int
+    let results: [MovieListModel]
+    let totalPages: Int
+    let totalResults: Int
+    
+    private enum CodingKeys: String, CodingKey {
+        case page
+        case results
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+}
+
 struct MovieListModel: Decodable {
     let id: Int
     let voteCount: Int
@@ -40,5 +54,4 @@ struct MovieListModel: Decodable {
         case overview
         case releaseDate = "release_date"
     }
-    
 }
