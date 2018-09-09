@@ -77,12 +77,10 @@
 		6836E6C82144B1B600017723 /* TMDb Challenge */ = {
 			isa = PBXGroup;
 			children = (
-				6836E6C92144B1B600017723 /* AppDelegate.swift */,
 				6836E6CB2144B1B600017723 /* ViewController.swift */,
 				6836E6CD2144B1B600017723 /* Main.storyboard */,
-				6836E6D02144B1B700017723 /* Assets.xcassets */,
-				6836E6D22144B1B700017723 /* LaunchScreen.storyboard */,
-				6836E6D52144B1B700017723 /* Info.plist */,
+				6836E6EA2144B38400017723 /* Resources */,
+				6836E6E92144B34000017723 /* Support Files */,
 			);
 			path = "TMDb Challenge";
 			sourceTree = "<group>";
@@ -94,6 +92,24 @@
 				6836E6E02144B1B700017723 /* Info.plist */,
 			);
 			path = "TMDb ChallengeTests";
+			sourceTree = "<group>";
+		};
+		6836E6E92144B34000017723 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				6836E6C92144B1B600017723 /* AppDelegate.swift */,
+				6836E6D52144B1B700017723 /* Info.plist */,
+				6836E6D22144B1B700017723 /* LaunchScreen.storyboard */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		6836E6EA2144B38400017723 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6836E6D02144B1B700017723 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,7 +376,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PGFLRY3JL2;
-				INFOPLIST_FILE = "TMDb Challenge/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/TMDb Challenge/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -378,7 +394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PGFLRY3JL2;
-				INFOPLIST_FILE = "TMDb Challenge/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/TMDb Challenge/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
