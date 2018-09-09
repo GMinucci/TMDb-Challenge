@@ -17,7 +17,7 @@ class MovieInfoTableViewCell: UITableViewCell {
         label.numberOfLines = 0
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         label.textColor = UIColor.tmdb.primaryTextColor
-        label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

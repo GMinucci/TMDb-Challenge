@@ -18,6 +18,8 @@ class MovieDetailViewController: UIViewController {
     // Var's
     var interactor: MovieDetailBusinessLogic?
     var router: (NSObjectProtocol & MovieDetailRoutingLogic & MovieDetailDataPassing)?
+    
+    var movieInfo = [(String, [MovieDetail.Get.ViewModel.Info])]()
 
     // Constructor
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {

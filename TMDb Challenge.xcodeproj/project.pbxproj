@@ -42,6 +42,7 @@
 		68B1D3112145839200D056CB /* MoviePosterHeadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D3102145839200D056CB /* MoviePosterHeadingView.swift */; };
 		68B1D31321458BB000D056CB /* MovieDetailViewController+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D31221458BB000D056CB /* MovieDetailViewController+TableView.swift */; };
 		68B1D31521458FD600D056CB /* MovieInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D31421458FD600D056CB /* MovieInfoTableViewCell.swift */; };
+		68B1D3172145956B00D056CB /* MovieInfoTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D3162145956B00D056CB /* MovieInfoTableHeaderView.swift */; };
 		7986730C39CC2440A71442D2 /* Pods_TMDb_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61391403EBB9301E7018B25F /* Pods_TMDb_Challenge.framework */; };
 		BF42100E758C3C99A01AE7A3 /* Pods_TMDb_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB4BE3555B93DCECA64DFBD /* Pods_TMDb_ChallengeTests.framework */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,7 @@
 		68B1D3102145839200D056CB /* MoviePosterHeadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterHeadingView.swift; sourceTree = "<group>"; };
 		68B1D31221458BB000D056CB /* MovieDetailViewController+TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetailViewController+TableView.swift"; sourceTree = "<group>"; };
 		68B1D31421458FD600D056CB /* MovieInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoTableViewCell.swift; sourceTree = "<group>"; };
+		68B1D3162145956B00D056CB /* MovieInfoTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoTableHeaderView.swift; sourceTree = "<group>"; };
 		8615A0D6B03CC395FE18A097 /* Pods-TMDb Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDb Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-TMDb Challenge/Pods-TMDb Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		8EA31FE430B521B6976B7D92 /* Pods-TMDb ChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDb ChallengeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TMDb ChallengeTests/Pods-TMDb ChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -289,6 +291,7 @@
 			children = (
 				688318492144C51B00E69D2E /* MoviePosterDescriptionView.swift */,
 				68B1D3102145839200D056CB /* MoviePosterHeadingView.swift */,
+				68B1D3162145956B00D056CB /* MovieInfoTableHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				68B1D3112145839200D056CB /* MoviePosterHeadingView.swift in Sources */,
 				688318302144B8A900E69D2E /* MovieListViewController+TableView.swift in Sources */,
 				68B1D3082145720D00D056CB /* MoviesAPIService+Router.swift in Sources */,
+				68B1D3172145956B00D056CB /* MovieInfoTableHeaderView.swift in Sources */,
 				68B1D30321456A2A00D056CB /* MovieDetailConfigurator.swift in Sources */,
 				68B1D30C21457B3800D056CB /* Colors.swift in Sources */,
 				68B1D31321458BB000D056CB /* MovieDetailViewController+TableView.swift in Sources */,

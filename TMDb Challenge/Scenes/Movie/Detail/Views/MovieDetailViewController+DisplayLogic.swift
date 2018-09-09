@@ -23,10 +23,10 @@ extension MovieDetailViewController: MovieDetailDisplayLogic {
         moviePosterHeadingView.movieTitleLabel.text = viewModel.title
         moviePosterHeadingView.backdropImageView.kf.setImage(with: viewModel.backdropImageURL)
         moviePosterHeadingView.posterImageView.kf.setImage(with: viewModel.posterImageURL)
-        
+        movieInfo = viewModel.info
         tableView.reloadData()
-        view.layoutIfNeeded()
         tableViewHeightConstraint.constant = tableView.contentSize.height
+        view.layoutIfNeeded()
     }
     
     func getMovieDetailsFailure(viewModel: MovieDetail.Get.ViewModel.Failure) {
