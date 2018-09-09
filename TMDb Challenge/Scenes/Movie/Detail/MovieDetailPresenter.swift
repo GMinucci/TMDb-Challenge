@@ -19,7 +19,11 @@ class MovieDetailPresenter: MovieDetailPresentationLogic {
     weak var viewController: MovieDetailDisplayLogic?
 
     func getMovieDetailsSuccess(response: MovieDetail.Get.Response.Success) {
-        let viewModel = MovieDetail.Get.ViewModel.Success(title: response.movie.title)
+        let viewModel = MovieDetail.Get.ViewModel.Success(
+            title: response.movie.title,
+            genres: response.movie.genres.compactMap({ $0.name }).joined(separator: " • "),
+            backdropImageURL: URL(string: "https://image.tmdb.org/t/p/original\(response.movie.backdropPath ?? "")"),
+            posterImageURL: URL(string: "https://image.tmdb.org/t/p/original\(response.movie.posterPath ?? "")"))
         viewController?.getMovieDetailsSuccess(viewModel: viewModel)
     }
     

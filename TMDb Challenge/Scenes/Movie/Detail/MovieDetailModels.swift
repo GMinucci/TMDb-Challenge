@@ -26,6 +26,9 @@ enum MovieDetail {
         enum ViewModel {
             struct Success {
                 let title: String
+                let genres: String
+                let backdropImageURL: URL?
+                let posterImageURL: URL?
             }
             struct Failure {
                 let message: String

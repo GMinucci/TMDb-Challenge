@@ -10,6 +10,9 @@ import UIKit
 
 class MovieDetailViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var moviePosterHeadingView: MoviePosterHeadingView!
+    
     // Var's
     var interactor: MovieDetailBusinessLogic?
     var router: (NSObjectProtocol & MovieDetailRoutingLogic & MovieDetailDataPassing)?
@@ -29,6 +32,7 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
+        view.backgroundColor = UIColor.tmdb.primaryDark
     }
 
     override func viewWillAppear(_ animated: Bool) {
