@@ -19,10 +19,11 @@ extension MovieSearchViewController: MovieSearchDisplayLogic {
     func searchMovieSuccess(viewModel: MovieSearch.Search.ViewModel.Success) {
         self.movieList = viewModel.movieList
         tableView.reloadData()
+        hideLoading()
     }
     
     func dismissLoading(viewModel: MovieSearch.Search.ViewModel.DismissLoading) {
-        
+        hideLoading()
     }
     
     func searchMovieFailure(viewModel: MovieSearch.Search.ViewModel.Failure) {
@@ -30,6 +31,7 @@ extension MovieSearchViewController: MovieSearchDisplayLogic {
         let action = UIAlertAction(title: "ok", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        hideLoading()
     }
     
 }

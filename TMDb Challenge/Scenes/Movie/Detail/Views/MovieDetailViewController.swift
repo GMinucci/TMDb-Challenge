@@ -43,6 +43,7 @@ class MovieDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        showLoading(delayed: 0.1)
         let request = MovieDetail.Get.Request()
         interactor?.getMovieDetails(request: request)
     }

@@ -27,6 +27,7 @@ extension MovieDetailViewController: MovieDetailDisplayLogic {
         tableView.reloadData()
         tableViewHeightConstraint.constant = tableView.contentSize.height
         view.layoutIfNeeded()
+        hideLoading()
     }
     
     func getMovieDetailsFailure(viewModel: MovieDetail.Get.ViewModel.Failure) {
@@ -34,6 +35,7 @@ extension MovieDetailViewController: MovieDetailDisplayLogic {
         let action = UIAlertAction(title: "ok", style: .default, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
+        hideLoading()
     }
     
 }
