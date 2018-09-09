@@ -53,4 +53,9 @@ extension MovieListViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "MovieDetail", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }

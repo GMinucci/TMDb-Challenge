@@ -13,7 +13,7 @@ protocol MovieDetailBusinessLogic {
 }
 
 protocol MovieDetailDataStore {
-
+    var movieID: Int? { get set }
 }
 
 class MovieDetailInteractor: MovieDetailBusinessLogic, MovieDetailDataStore {
@@ -21,5 +21,7 @@ class MovieDetailInteractor: MovieDetailBusinessLogic, MovieDetailDataStore {
     // Var's
     var presenter: MovieDetailPresentationLogic?
 //    let worker = MovieDetailWorker(service: <serviceClass>())
+    
+    var movieID: Int?
 
 }
