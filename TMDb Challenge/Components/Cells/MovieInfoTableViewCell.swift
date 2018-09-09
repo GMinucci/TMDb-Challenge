@@ -24,6 +24,7 @@ class MovieInfoTableViewCell: UITableViewCell {
     let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .right
+        label.numberOfLines = 0
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         label.textColor = UIColor.tmdb.secondaryTextColor
@@ -52,14 +53,14 @@ class MovieInfoTableViewCell: UITableViewCell {
         
         addSubview(titleLabel)
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
         
         addSubview(descriptionLabel)
         descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 16).isActive = true
-        descriptionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8).isActive = true
-        descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8).isActive = true
+        descriptionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        descriptionLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16).isActive = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

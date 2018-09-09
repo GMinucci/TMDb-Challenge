@@ -17,14 +17,18 @@ protocol MovieDetailDisplayLogic: class {
 extension MovieDetailViewController: MovieDetailDisplayLogic {
 
     func getMovieDetailsSuccess(viewModel: MovieDetail.Get.ViewModel.Success) {
+        // Set heading data
         title = viewModel.title
         moviewOverviewLabel.text = viewModel.overview
         moviePosterHeadingView.movieGenreLabel.text = viewModel.genres
         moviePosterHeadingView.movieTitleLabel.text = viewModel.title
         moviePosterHeadingView.backdropImageView.kf.setImage(with: viewModel.backdropImageURL)
         moviePosterHeadingView.posterImageView.kf.setImage(with: viewModel.posterImageURL)
+        
+        // Set info table view data
         movieInfo = viewModel.info
         tableView.reloadData()
+        view.layoutIfNeeded()
         tableViewHeightConstraint.constant = tableView.contentSize.height
         view.layoutIfNeeded()
         hideLoading()
