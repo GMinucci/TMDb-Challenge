@@ -9,7 +9,8 @@
 import UIKit
 
 protocol MovieListPresentationLogic {
-
+    func getUpcomingMoviesSuccess(response: MovieList.List.Response.Success)
+    func getUpcomingMoviesFailure(response: MovieList.List.Response.Failure)
 }
 
 class MovieListPresenter: MovieListPresentationLogic {
@@ -17,4 +18,21 @@ class MovieListPresenter: MovieListPresentationLogic {
     // Var's
     weak var viewController: MovieListDisplayLogic?
 
+    func getUpcomingMoviesSuccess(response: MovieList.List.Response.Success) {
+        let movieList = response.movieList.map({
+            MovieList.List.ViewModel.MovieViewModel(
+                backdropImageURL: URL(string: "https://image.tmdb.org/t/p/w500\($0.backdropPath ?? "")"),
+                posterImageURL: URL(string: "https://image.tmdb.org/t/p/w500\($0.posterPath ?? "")"),
+                title: $0.title,
+                description: $0.overview)
+        })
+        let viewModel = MovieList.List.ViewModel.Success(movieList: movieList)
+        viewController?.getUpcomingMoviesSuccess(viewModel: viewModel)
+    }
+    
+    func getUpcomingMoviesFailure(response: MovieList.List.Response.Failure) {
+        let viewModel = MovieList.List.ViewModel.Failure(message: response.error.localizedDescription)
+        viewController?.getUpcomingMoviesFailure(viewModel: viewModel)
+    }
+    
 }

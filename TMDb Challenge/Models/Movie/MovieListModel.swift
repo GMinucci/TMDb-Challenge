@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MovieListModel {
+struct MovieListModel: Decodable {
     let id: Int
     let voteCount: Int
     let video: Bool
@@ -22,4 +22,23 @@ struct MovieListModel {
     let backdropPath: String?
     let adult: Bool
     let overview: String
+    let releaseDate: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case voteCount = "vote_count"
+        case video
+        case voteAverage = "vote_average"
+        case title
+        case popularity
+        case posterPath = "poster_path"
+        case originalLanguage = "original_language"
+        case originalTitle = "original_title"
+        case genreIds = "genre_ids"
+        case backdropPath = "backdrop_path"
+        case adult
+        case overview
+        case releaseDate = "release_date"
+    }
+    
 }
