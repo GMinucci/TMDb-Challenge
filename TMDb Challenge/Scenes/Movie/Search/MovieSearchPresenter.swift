@@ -22,7 +22,7 @@ class MovieSearchPresenter: MovieSearchPresentationLogic {
     func searchMovieSuccess(response: MovieSearch.Search.Response.Success) {
         let movieList = response.movieList.map({
             MovieSearch.Search.ViewModel.MovieViewModel(
-                posterImageURL: URL(string: "https://image.tmdb.org/t/p/original\($0.posterPath ?? "")"),
+                posterImageURL: MoviesAPIService.buildImageURL(path: $0.posterPath),
                 title: $0.title,
                 description: $0.overview)
         })

@@ -25,6 +25,15 @@ class MoviesAPIService: SessionManager {
         self.init(configuration: configuration)
     }
     
+    // build helper methods
+    static func buildShareURLString(movieID: Int) -> String {
+        return "themoviedb.org/movie/\(movieID)"
+    }
+    
+    static func buildImageURL(path: String?) -> URL? {
+        return URL(string: "https://image.tmdb.org/t/p/original\(path ?? "")")
+    }
+    
     // MARK: Methods
     static func parseErrorResponse(dict: Any?) -> NSError {
         // Convenience parser for API default error responses
@@ -35,10 +44,6 @@ class MoviesAPIService: SessionManager {
         let errorMessage = responseDict["status_message"] as? String ?? "Couldn't paarse any error message"
         let error = NSError(domain: "MoviesAPIService", code: 0, userInfo: [NSLocalizedDescriptionKey: errorMessage])
         return error
-    }
-    
-    static func buildShareURL(movieID: Int) -> String {
-        return "themoviedb.org/movie/\(movieID)"
     }
     
     static func getUpcomingMovies(page: Int) -> Promise<MovieListResultsPageModel> {

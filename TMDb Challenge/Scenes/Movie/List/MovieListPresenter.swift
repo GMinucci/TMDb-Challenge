@@ -22,7 +22,7 @@ class MovieListPresenter: MovieListPresentationLogic {
     func getUpcomingMoviesSuccess(response: MovieList.List.Response.Success) {
         let movieList = response.movieList.map({
             MovieList.List.ViewModel.MovieViewModel(
-                posterImageURL: URL(string: "https://image.tmdb.org/t/p/original\($0.posterPath ?? "")"),
+                posterImageURL: MoviesAPIService.buildImageURL(path: $0.posterPath),
                 title: $0.title,
                 description: $0.overview)
         })

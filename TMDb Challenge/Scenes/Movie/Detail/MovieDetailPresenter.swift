@@ -56,8 +56,8 @@ class MovieDetailPresenter: MovieDetailPresentationLogic {
             title: response.movie.title,
             overview: response.movie.overview ?? "-",
             genres: response.movie.genres.compactMap({ $0.name }).joined(separator: " • "),
-            backdropImageURL: URL(string: "https://image.tmdb.org/t/p/original\(response.movie.backdropPath ?? "")"),
-            posterImageURL: URL(string: "https://image.tmdb.org/t/p/original\(response.movie.posterPath ?? "")"),
+            backdropImageURL: MoviesAPIService.buildImageURL(path: response.movie.backdropPath),
+            posterImageURL: MoviesAPIService.buildImageURL(path: response.movie.posterPath),
             info: movieInfo)
         viewController?.getMovieDetailsSuccess(viewModel: viewModel)
     }
@@ -68,7 +68,7 @@ class MovieDetailPresenter: MovieDetailPresentationLogic {
     }
     
     func shareMovieSuccess(response: MovieDetail.Share.Response.Success) {
-        let message = "Check out this awesome movie on " + MoviesAPIService.buildShareURL(movieID: response.movieID)
+        let message = "Check out this awesome movie on " + MoviesAPIService.buildShareURLString(movieID: response.movieID)
         let viewModel = MovieDetail.Share.ViewModel.Success(message: message)
         viewController?.shareMovieSuccess(viewModel: viewModel)
     }
