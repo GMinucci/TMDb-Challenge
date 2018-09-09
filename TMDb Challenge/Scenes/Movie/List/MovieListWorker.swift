@@ -7,17 +7,8 @@
 //
 
 import UIKit
-
-protocol MovieListWorkerLogic {
-
-}
+import PromiseKit
 
 class MovieListWorker {
-
-    private let service: MovieListWorkerLogic
-
-    init(service: MovieListWorkerLogic) {
-        self.service = service
-    }
 
 }

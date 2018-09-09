@@ -20,6 +20,6 @@ class MovieListInteractor: MovieListBusinessLogic, MovieListDataStore {
 
     // Var's
     var presenter: MovieListPresentationLogic?
-//    let worker = MovieListWorker(service: <serviceClass>())
+    let worker = MovieListWorker()
 
 }
