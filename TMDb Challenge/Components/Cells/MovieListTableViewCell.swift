@@ -48,7 +48,7 @@ class MovieListTableViewCell: UITableViewCell {
     private func setupUIComponents() {
         selectionStyle = .none
         backgroundColor = .clear
-        
+                
         addSubview(cardContainer)
         cardContainer.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
         cardContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
@@ -66,15 +66,6 @@ class MovieListTableViewCell: UITableViewCell {
         movieDataView.trailingAnchor.constraint(equalTo: cardContainer.trailingAnchor).isActive = true
         movieDataView.bottomAnchor.constraint(equalTo: cardContainer.bottomAnchor).isActive = true
         movieDataView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.4).isActive = true
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
-            self.cardContainer.transform = selected ? CGAffineTransform(scaleX: 0.9, y: 0.9) : CGAffineTransform.identity
-        })
-        
     }
 
 }
