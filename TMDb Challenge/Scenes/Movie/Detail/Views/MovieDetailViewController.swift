@@ -11,6 +11,7 @@ import UIKit
 class MovieDetailViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var moviePosterHeadingView: MoviePosterHeadingView!
     @IBOutlet weak var moviewOverviewLabel: UILabel!
     
@@ -47,7 +48,7 @@ class MovieDetailViewController: UIViewController {
     private func setupUIElements() {
         moviewOverviewLabel.numberOfLines = 0
         moviewOverviewLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        moviewOverviewLabel.textColor = .white
+        moviewOverviewLabel.textColor = UIColor.tmdb.secondaryTextColor
     }
     
 }

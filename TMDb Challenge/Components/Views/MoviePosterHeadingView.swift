@@ -38,7 +38,7 @@ class MoviePosterHeadingView: UIView {
         label.text = "Movie Title"
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        label.textColor = .white
+        label.textColor = UIColor.tmdb.primaryTextColor
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -49,7 +49,7 @@ class MoviePosterHeadingView: UIView {
         label.text = "Movie Genre"
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        label.textColor = .white
+        label.textColor = UIColor.tmdb.primaryTextColor
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
