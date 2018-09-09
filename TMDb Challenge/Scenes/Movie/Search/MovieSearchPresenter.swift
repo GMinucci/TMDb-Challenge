@@ -9,6 +9,7 @@
 import UIKit
 
 protocol MovieSearchPresentationLogic {
+    func dismissLoading(response: MovieSearch.Search.Response.DismissLoading)
     func searchMovieSuccess(response: MovieSearch.Search.Response.Success)
     func searchMovieFailure(response: MovieSearch.Search.Response.Failure)
 }
@@ -27,6 +28,11 @@ class MovieSearchPresenter: MovieSearchPresentationLogic {
         })
         let viewModel = MovieSearch.Search.ViewModel.Success(movieList: movieList)
         viewController?.searchMovieSuccess(viewModel: viewModel)
+    }
+    
+    func dismissLoading(response: MovieSearch.Search.Response.DismissLoading) {
+        let viewModel = MovieSearch.Search.ViewModel.DismissLoading()
+        viewController?.dismissLoading(viewModel: viewModel)
     }
     
     func searchMovieFailure(response: MovieSearch.Search.Response.Failure) {

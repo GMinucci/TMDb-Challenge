@@ -25,9 +25,41 @@ class MovieSearchInteractor: MovieSearchBusinessLogic, MovieSearchDataStore {
     
     internal(set) var movieList = [MovieListModel]()
     internal var nextPage: Int?
+    private var lastQuery = ""
 
     func searchMovie(request: MovieSearch.Search.Request) {
-        // 
+        if let currentQuery = request.query {
+            lastQuery = currentQuery
+        }
+        
+        if request.mode == .next && nextPage == nil {
+            // If the load mode is to load next page and there is no next page don't do anything
+            let response = MovieSearch.Search.Response.DismissLoading()
+            presenter?.dismissLoading(response: response)
+            return
+        }
+        
+        let requestedPage = nextPage ?? 1
+        worker.searchMovie(query: request.query ?? lastQuery, page: requestedPage)
+            .done { (result) in
+                if requestedPage + 1 <= result.totalPages {
+                    self.nextPage = requestedPage + 1
+                }
+                else {
+                    self.nextPage = nil
+                }
+                
+                if request.mode == .load {
+                    self.movieList.removeAll()
+                }
+                self.movieList.append(contentsOf: result.results)
+                let response = MovieSearch.Search.Response.Success(movieList: self.movieList)
+                self.presenter?.searchMovieSuccess(response: response)
+        }
+            .catch { (error) in
+                let response = MovieSearch.Search.Response.Failure(error: error)
+                self.presenter?.searchMovieFailure(response: response)
+        }
     }
     
 }

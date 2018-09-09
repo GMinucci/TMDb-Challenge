@@ -12,14 +12,17 @@ import Alamofire
 extension MoviesAPIService {
     
     enum MoviesRouter: MoviesAPIGenericRouter {
-        case list(page: Int?)
+        case list(page: Int)
         case detail(id: Int)
+        case search(query: String, page: Int)
         
         var method: HTTPMethod {
             switch self {
             case .list:
                 return .get
             case .detail:
+                return .get
+            case .search:
                 return .get
             }
         }
@@ -30,19 +33,26 @@ extension MoviesAPIService {
                 return "movie/upcoming"
             case .detail(let id):
                 return "movie/\(id)"
+            case .search:
+                return "search/movie"
             }
         }
         
         var parameters: Parameters? {
             switch self {
             case .list(let page):
-                var params = ["language": "en-US"]
-                if let safePage = page {
-                    params.updateValue("\(safePage)", forKey: "page")
-                }
-                return params
+                return [
+                    "language": "en-US",
+                    "page": "\(page)"
+                ]
             case .detail:
                 return nil
+            case .search(let query, let page):
+                return [
+                    "language": "en-US",
+                    "query": query,
+                    "page": "\(page)"
+                ]
             }
         }
         
@@ -51,6 +61,8 @@ extension MoviesAPIService {
             case .list:
                 return nil
             case .detail:
+                return nil
+            case .search:
                 return nil
             }
         }

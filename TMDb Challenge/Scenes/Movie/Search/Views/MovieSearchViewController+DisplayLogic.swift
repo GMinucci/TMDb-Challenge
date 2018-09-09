@@ -9,6 +9,7 @@
 import UIKit
 
 protocol MovieSearchDisplayLogic: class {
+    func dismissLoading(viewModel: MovieSearch.Search.ViewModel.DismissLoading)
     func searchMovieSuccess(viewModel: MovieSearch.Search.ViewModel.Success)
     func searchMovieFailure(viewModel: MovieSearch.Search.ViewModel.Failure)
 }
@@ -18,6 +19,10 @@ extension MovieSearchViewController: MovieSearchDisplayLogic {
     func searchMovieSuccess(viewModel: MovieSearch.Search.ViewModel.Success) {
         self.movieList = viewModel.movieList
         tableView.reloadData()
+    }
+    
+    func dismissLoading(viewModel: MovieSearch.Search.ViewModel.DismissLoading) {
+        
     }
     
     func searchMovieFailure(viewModel: MovieSearch.Search.ViewModel.Failure) {

@@ -23,7 +23,7 @@ extension MovieSearchViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let request = MovieSearch.Search.Request(entry: searchBar.text ?? "")
+        let request = MovieSearch.Search.Request(mode: .load, query: searchBar.text ?? "")
         interactor?.searchMovie(request: request)
     }
     

@@ -42,4 +42,16 @@ extension MovieSearchViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == movieList.count - 5 {
+            let request = MovieSearch.Search.Request(mode: .next, query: nil)
+            interactor?.searchMovie(request: request)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "MovieDetail", sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }

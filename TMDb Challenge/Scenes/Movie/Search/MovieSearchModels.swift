@@ -11,12 +11,18 @@ import UIKit
 enum MovieSearch {
     enum Search {
         struct Request {
-            let entry: String
+            enum Mode {
+                case load, next
+            }
+            let mode: Mode
+            let query: String?
         }
         
         enum Response {
             struct Success {
                 let movieList: [MovieListModel]
+            }
+            struct DismissLoading {
             }
             struct Failure {
                 let error: Error
@@ -31,6 +37,8 @@ enum MovieSearch {
             }
             struct Success {
                 let movieList: [MovieViewModel]
+            }
+            struct DismissLoading {
             }
             struct Failure {
                 let message: String

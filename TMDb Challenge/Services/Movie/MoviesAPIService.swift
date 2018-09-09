@@ -37,9 +37,8 @@ class MoviesAPIService: SessionManager {
         return error
     }
     
-    static func getUpcomingMovies(page: Int?) -> Promise<MovieListResultsPageModel> {
+    static func getUpcomingMovies(page: Int) -> Promise<MovieListResultsPageModel> {
         return Promise.init { seal in
-            
             let request = MoviesRouter.list(page: page)
             MoviesAPIService.session.request(request).responseJSON(completionHandler: { response in
                 guard let statusCode = response.response?.statusCode else {
@@ -47,7 +46,6 @@ class MoviesAPIService: SessionManager {
                     seal.reject(error)
                     return
                 }
-                
                 switch statusCode {
                 case 200:
                     do {
@@ -65,13 +63,11 @@ class MoviesAPIService: SessionManager {
                     seal.reject(error)
                 }
             })
-            
         }
     }
     
     static func getMovieDetail(id: Int) -> Promise<MovieDetailModel> {
         return Promise.init { seal in
-            
             let request = MoviesRouter.detail(id: id)
             MoviesAPIService.session.request(request).responseJSON(completionHandler: { response in
                 guard let statusCode = response.response?.statusCode else {
@@ -79,7 +75,6 @@ class MoviesAPIService: SessionManager {
                     seal.reject(error)
                     return
                 }
-                
                 switch statusCode {
                 case 200:
                     do {
@@ -98,6 +93,35 @@ class MoviesAPIService: SessionManager {
                 }
             })
             
+        }
+    }
+    
+    static func searchMovie(query: String, page: Int) -> Promise<MovieListResultsPageModel> {
+        return Promise.init { seal in
+            let request = MoviesRouter.search(query: query, page: page)
+            MoviesAPIService.session.request(request).responseJSON(completionHandler: { response in
+                guard let statusCode = response.response?.statusCode else {
+                    let error = NSError(domain: "MoviesAPIService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Couldn't get response status code from the API"])
+                    seal.reject(error)
+                    return
+                }
+                switch statusCode {
+                case 200:
+                    do {
+                        let parsedResult = try DecodableParser<MovieListResultsPageModel>.parse(dict: response.result.value)
+                        seal.fulfill(parsedResult)
+                    }
+                    catch let error {
+                        seal.reject(error)
+                    }
+                case 401, 404:
+                    let error = parseErrorResponse(dict: response.result.value)
+                    seal.reject(error)
+                default:
+                    let error = NSError(domain: "MoviesAPIService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Couldn't get any response from the API"])
+                    seal.reject(error)
+                }
+            })
         }
     }
 }
