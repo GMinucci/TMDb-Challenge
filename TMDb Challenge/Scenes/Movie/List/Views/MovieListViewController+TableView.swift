@@ -16,6 +16,7 @@ extension MovieListViewController {
         tableView.separatorColor = UIColor.tmdb.secondaryDark
         tableView.backgroundColor = UIColor.tmdb.primaryDark
         tableView.rowHeight = tableView.bounds.size.width/2
+        tableView.tableFooterView = UIView()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

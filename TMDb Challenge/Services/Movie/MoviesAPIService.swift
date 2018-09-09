@@ -18,6 +18,7 @@ class MoviesAPIService: SessionManager {
     static let apiKey = "1f54bd990f1cdfb230adb312546d765d"
     
     static let session = MoviesAPIService()
+    var genreList = [MovieDetailModel.Genre]()
     
     convenience init() {
         let configuration = URLSessionConfiguration.default
@@ -25,7 +26,7 @@ class MoviesAPIService: SessionManager {
         self.init(configuration: configuration)
     }
     
-    // build helper methods
+    // Helper methods
     static func buildShareURLString(movieID: Int) -> String {
         return "themoviedb.org/movie/\(movieID)"
     }
@@ -44,6 +45,42 @@ class MoviesAPIService: SessionManager {
         let errorMessage = responseDict["status_message"] as? String ?? "Couldn't paarse any error message"
         let error = NSError(domain: "MoviesAPIService", code: 0, userInfo: [NSLocalizedDescriptionKey: errorMessage])
         return error
+    }
+    
+    static func getGenreList() -> Promise<Void> {
+        return Promise.init { seal in
+            guard MoviesAPIService.session.genreList.isEmpty else {
+                seal.fulfill(())
+                return
+            }
+            
+            let request = MoviesRouter.genres
+            MoviesAPIService.session.request(request).responseJSON(completionHandler: { response in
+                guard let statusCode = response.response?.statusCode else {
+                    let error = NSError(domain: "MoviesAPIService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Couldn't get response status code from the API"])
+                    seal.reject(error)
+                    return
+                }
+                switch statusCode {
+                case 200:
+                    do {
+                        let parsedResult = try DecodableParser<MovieGenreListModel>.parse(dict: response.result.value)
+                        MoviesAPIService.session.genreList.removeAll()
+                        MoviesAPIService.session.genreList.append(contentsOf: parsedResult.genres)
+                        seal.fulfill(())
+                    }
+                    catch let error {
+                        seal.reject(error)
+                    }
+                case 401, 404:
+                    let error = parseErrorResponse(dict: response.result.value)
+                    seal.reject(error)
+                default:
+                    let error = NSError(domain: "MoviesAPIService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Couldn't get any response from the API"])
+                    seal.reject(error)
+                }
+            })
+        }
     }
     
     static func getUpcomingMovies(page: Int) -> Promise<MovieListResultsPageModel> {
