@@ -18,16 +18,35 @@ class MovieSearchPresenter: MovieSearchPresentationLogic {
 
     // Var's
     weak var viewController: MovieSearchDisplayLogic?
+    private let dateFormatter = DateFormatter()
 
     func searchMovieSuccess(response: MovieSearch.Search.Response.Success) {
         let movieList = response.movieList.map({
             MovieSearch.Search.ViewModel.MovieViewModel(
                 posterImageURL: MoviesAPIService.buildImageURL(path: $0.posterPath),
                 title: $0.title,
-                description: $0.overview)
+                description: buildMovieDescription(movie: $0))
         })
         let viewModel = MovieSearch.Search.ViewModel.Success(movieList: movieList)
         viewController?.searchMovieSuccess(viewModel: viewModel)
+    }
+    
+    private func buildMovieDescription(movie: MovieListModel) -> String {
+        var description = ""
+        // Parse genres
+        let genres = MoviesAPIService.session.genreList.filter({ movie.genreIds.contains($0.id) }).compactMap({ $0.name })
+        description = description + genres.joined(separator: " • ") + "\n"
+        
+        // Parse release date
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        var releaseDate = ""
+        if let date = dateFormatter.date(from: movie.releaseDate) {
+            dateFormatter.dateFormat = "EEEE, MMM d, yyyy"
+            releaseDate = dateFormatter.string(from: date)
+            description += releaseDate
+        }
+        
+        return description
     }
     
     func dismissLoading(response: MovieSearch.Search.Response.DismissLoading) {

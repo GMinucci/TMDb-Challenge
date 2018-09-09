@@ -39,8 +39,11 @@ class MovieSearchInteractor: MovieSearchBusinessLogic, MovieSearchDataStore {
             return
         }
         
+        let requestedQuery = request.query ?? lastQuery
         let requestedPage = nextPage ?? 1
-        worker.searchMovie(query: request.query ?? lastQuery, page: requestedPage)
+        worker
+            .updateGenreList()
+            .then { self.worker.searchMovie(query: requestedQuery, page: requestedPage) }
             .done { (result) in
                 if requestedPage + 1 <= result.totalPages {
                     self.nextPage = requestedPage + 1

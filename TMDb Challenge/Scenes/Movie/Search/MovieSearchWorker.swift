@@ -11,6 +11,10 @@ import PromiseKit
 
 class MovieSearchWorker {
 
+    func updateGenreList() -> Promise<Void> {
+        return MoviesAPIService.getGenreList()
+    }
+    
     func searchMovie(query: String, page: Int) -> Promise<MovieListResultsPageModel> {
         return MoviesAPIService.searchMovie(query: query, page: page)
     }
