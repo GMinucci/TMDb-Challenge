@@ -27,10 +27,7 @@ extension MovieSearchViewController: MovieSearchDisplayLogic {
     }
     
     func searchMovieFailure(viewModel: MovieSearch.Search.ViewModel.Failure) {
-        let alert = UIAlertController(title: "Error", message: viewModel.message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "ok", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        showAlert(message: viewModel.message)
         hideLoading()
     }
     

@@ -37,10 +37,7 @@ extension MovieDetailViewController: MovieDetailDisplayLogic {
     }
     
     func getMovieDetailsFailure(viewModel: MovieDetail.Get.ViewModel.Failure) {
-        let alert = UIAlertController(title: "Error", message: viewModel.message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "ok", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        showAlert(message: viewModel.message)
         hideLoading()
     }
     
@@ -50,10 +47,7 @@ extension MovieDetailViewController: MovieDetailDisplayLogic {
     }
     
     func shareMovieFailure(viewModel: MovieDetail.Share.ViewModel.Failure) {
-        let alert = UIAlertController(title: "Error", message: viewModel.message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "ok", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        showAlert(message: viewModel.message)
     }
     
 }
