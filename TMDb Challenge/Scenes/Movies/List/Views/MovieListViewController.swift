@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieListViewController: UIViewController {
+class MovieListViewController: UITableViewController {
 
     // Var's
     var interactor: MovieListBusinessLogic?
