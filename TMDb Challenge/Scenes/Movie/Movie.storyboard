@@ -51,7 +51,7 @@
         <scene sceneID="dDM-CI-e83">
             <objects>
                 <navigationController id="kRB-26-9zp" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6nL-47-Qe1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6nL-47-Qe1" customClass="TMDbNavigationBar" customModule="TMDb_Challenge" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

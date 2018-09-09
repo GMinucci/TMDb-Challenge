@@ -14,7 +14,7 @@ extension MovieListViewController {
     func setupTableView() {
         tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: MovieListTableViewCell.reuseIdentifier)
         tableView.separatorColor = .clear
-        tableView.backgroundColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0)
+        tableView.backgroundColor = UIColor.tmdb.primaryDark
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
