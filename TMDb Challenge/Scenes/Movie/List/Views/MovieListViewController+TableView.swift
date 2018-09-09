@@ -15,6 +15,7 @@ extension MovieListViewController {
         tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: MovieListTableViewCell.reuseIdentifier)
         tableView.separatorColor = .clear
         tableView.backgroundColor = UIColor.tmdb.primaryDark
+        tableView.rowHeight = tableView.bounds.size.width
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -40,10 +41,6 @@ extension MovieListViewController {
         cell.movieDataView.posterImageView.kf.setImage(with: movie.posterImageURL)
         
         return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.bounds.size.width
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

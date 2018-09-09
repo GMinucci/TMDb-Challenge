@@ -14,7 +14,6 @@ class MovieInfoTableViewCell: UITableViewCell {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         label.textColor = UIColor.tmdb.primaryTextColor
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -24,7 +23,6 @@ class MovieInfoTableViewCell: UITableViewCell {
     
     let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.numberOfLines = 0
         label.textAlignment = .right
         label.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
