@@ -23,9 +23,9 @@ class MovieListInteractor: MovieListBusinessLogic, MovieListDataStore {
     var presenter: MovieListPresentationLogic?
     let worker = MovieListWorker()
     
-    var movieList = [MovieListModel]()
-    var nextPage: Int?
-    var isFetching = false
+    internal(set) var movieList = [MovieListModel]()
+    internal var nextPage: Int?
+    private var isFetching = false
     
     func getUpcomingMovies(request: MovieList.List.Request) {
         guard !isFetching else {
