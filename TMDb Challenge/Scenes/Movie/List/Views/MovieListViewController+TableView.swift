@@ -13,9 +13,9 @@ extension MovieListViewController {
     
     func setupTableView() {
         tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: MovieListTableViewCell.reuseIdentifier)
-        tableView.separatorColor = .clear
+        tableView.separatorColor = UIColor.tmdb.secondaryDark
         tableView.backgroundColor = UIColor.tmdb.primaryDark
-        tableView.rowHeight = tableView.bounds.size.width
+        tableView.rowHeight = tableView.bounds.size.width/2
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,7 +35,6 @@ extension MovieListViewController {
         }
         let movie = movieList[indexPath.row]
         
-        cell.backdropImageView.kf.setImage(with: movie.backdropImageURL)
         cell.movieDataView.movieTitleLabel.text = movie.title
         cell.movieDataView.movieDescriptionLabel.text = movie.description
         cell.movieDataView.posterImageView.kf.setImage(with: movie.posterImageURL)
