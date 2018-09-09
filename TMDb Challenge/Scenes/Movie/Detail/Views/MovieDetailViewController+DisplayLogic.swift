@@ -18,6 +18,7 @@ extension MovieDetailViewController: MovieDetailDisplayLogic {
 
     func getMovieDetailsSuccess(viewModel: MovieDetail.Get.ViewModel.Success) {
         title = viewModel.title
+        moviewOverviewLabel.text = viewModel.overview
         moviePosterHeadingView.movieGenreLabel.text = viewModel.genres
         moviePosterHeadingView.movieTitleLabel.text = viewModel.title
         moviePosterHeadingView.backdropImageView.kf.setImage(with: viewModel.backdropImageURL)

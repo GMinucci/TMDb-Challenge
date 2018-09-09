@@ -10,6 +10,10 @@ import UIKit
 
 extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func setupTableView() {
+        
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 0
     }
