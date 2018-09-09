@@ -37,6 +37,8 @@
 		68B1D30221456A2A00D056CB /* MovieDetailViewController+DisplayLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D2FA21456A2A00D056CB /* MovieDetailViewController+DisplayLogic.swift */; };
 		68B1D30321456A2A00D056CB /* MovieDetailConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D2FB21456A2A00D056CB /* MovieDetailConfigurator.swift */; };
 		68B1D30621456E0500D056CB /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D30521456E0500D056CB /* MovieDetailModel.swift */; };
+		68B1D3082145720D00D056CB /* MoviesAPIService+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D3072145720D00D056CB /* MoviesAPIService+Router.swift */; };
+		68B1D30A2145735500D056CB /* MoviesAPIDecodableParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B1D3092145735500D056CB /* MoviesAPIDecodableParser.swift */; };
 		7986730C39CC2440A71442D2 /* Pods_TMDb_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61391403EBB9301E7018B25F /* Pods_TMDb_Challenge.framework */; };
 		BF42100E758C3C99A01AE7A3 /* Pods_TMDb_ChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DB4BE3555B93DCECA64DFBD /* Pods_TMDb_ChallengeTests.framework */; };
 /* End PBXBuildFile section */
@@ -90,6 +92,8 @@
 		68B1D2FA21456A2A00D056CB /* MovieDetailViewController+DisplayLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieDetailViewController+DisplayLogic.swift"; sourceTree = "<group>"; };
 		68B1D2FB21456A2A00D056CB /* MovieDetailConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailConfigurator.swift; sourceTree = "<group>"; };
 		68B1D30521456E0500D056CB /* MovieDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
+		68B1D3072145720D00D056CB /* MoviesAPIService+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MoviesAPIService+Router.swift"; sourceTree = "<group>"; };
+		68B1D3092145735500D056CB /* MoviesAPIDecodableParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPIDecodableParser.swift; sourceTree = "<group>"; };
 		8615A0D6B03CC395FE18A097 /* Pods-TMDb Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDb Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-TMDb Challenge/Pods-TMDb Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		8EA31FE430B521B6976B7D92 /* Pods-TMDb ChallengeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TMDb ChallengeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TMDb ChallengeTests/Pods-TMDb ChallengeTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -257,7 +261,9 @@
 			isa = PBXGroup;
 			children = (
 				688318412144C2D100E69D2E /* MoviesAPIService.swift */,
+				68B1D3072145720D00D056CB /* MoviesAPIService+Router.swift */,
 				6883184D2144DDAA00E69D2E /* MoviesAPIGenericRouter.swift */,
+				68B1D3092145735500D056CB /* MoviesAPIDecodableParser.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -494,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B1D30A2145735500D056CB /* MoviesAPIDecodableParser.swift in Sources */,
 				688318422144C2D100E69D2E /* MoviesAPIService.swift in Sources */,
 				68B1D2FF21456A2A00D056CB /* MovieDetailModels.swift in Sources */,
 				6836E6CC2144B1B600017723 /* ViewController.swift in Sources */,
@@ -508,6 +515,7 @@
 				688318282144B80A00E69D2E /* MovieListViewController.swift in Sources */,
 				688318262144B80A00E69D2E /* MovieListRouter.swift in Sources */,
 				688318302144B8A900E69D2E /* MovieListViewController+TableView.swift in Sources */,
+				68B1D3082145720D00D056CB /* MoviesAPIService+Router.swift in Sources */,
 				68B1D30321456A2A00D056CB /* MovieDetailConfigurator.swift in Sources */,
 				68B1D2FC21456A2A00D056CB /* MovieDetailPresenter.swift in Sources */,
 				6883184E2144DDAA00E69D2E /* MoviesAPIGenericRouter.swift in Sources */,
