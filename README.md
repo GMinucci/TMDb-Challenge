@@ -4,7 +4,7 @@
 
 This is the source code for the Mobile Dev Code challenge assignment for ArcTouch.
 
-![TMDb-Challenge](https://imgur.com/gallery/lFZRdrr)
+![TMDb-Challenge](https://i.imgur.com/lFZRdrr.png)
 
 ## Usage
 
