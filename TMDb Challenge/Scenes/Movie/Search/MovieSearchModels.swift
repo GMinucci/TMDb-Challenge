@@ -1,20 +1,21 @@
 //
-//  MovieListModels.swift
+//  MovieSearchModels.swift
 //  TMDb Challenge
 //
-//  Created by Gabriel Minucci on 08/09/18.
+//  Created by Gabriel Minucci on 09/09/18.
 //  Copyright (c) 2018 Minucci. All rights reserved.
 //
 
 import UIKit
 
-enum MovieList {
-    enum List {
+enum MovieSearch {
+    enum Search {
         struct Request {
             enum Mode {
-                case load, next, reload
+                case load, next
             }
             let mode: Mode
+            let query: String?
         }
         
         enum Response {

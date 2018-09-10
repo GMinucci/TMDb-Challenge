@@ -1,36 +1,35 @@
 //
-//  MovieListPresenter.swift
+//  MovieSearchPresenter.swift
 //  TMDb Challenge
 //
-//  Created by Gabriel Minucci on 08/09/18.
+//  Created by Gabriel Minucci on 09/09/18.
 //  Copyright (c) 2018 Minucci. All rights reserved.
 //
 
 import UIKit
 
-protocol MovieListPresentationLogic {
-    func dismissLoading(response: MovieList.List.Response.DismissLoading)
-    func getUpcomingMoviesSuccess(response: MovieList.List.Response.Success)
-    func getUpcomingMoviesFailure(response: MovieList.List.Response.Failure)
+protocol MovieSearchPresentationLogic {
+    func dismissLoading(response: MovieSearch.Search.Response.DismissLoading)
+    func searchMovieSuccess(response: MovieSearch.Search.Response.Success)
+    func searchMovieFailure(response: MovieSearch.Search.Response.Failure)
 }
 
-class MovieListPresenter: MovieListPresentationLogic {
+class MovieSearchPresenter: MovieSearchPresentationLogic {
 
     // Var's
-    weak var viewController: MovieListDisplayLogic?
+    weak var viewController: MovieSearchDisplayLogic?
     private let dateFormatter = DateFormatter()
-    
-    func getUpcomingMoviesSuccess(response: MovieList.List.Response.Success) {
-        
+
+    func searchMovieSuccess(response: MovieSearch.Search.Response.Success) {
         let movieList = response.movieList.map({
-            MovieList.List.ViewModel.MovieViewModel(
+            MovieSearch.Search.ViewModel.MovieViewModel(
                 posterImageURL: MoviesAPIService.buildImageURL(path: $0.posterPath),
                 title: $0.title,
                 description: buildMovieDescription(movie: $0),
                 starred: $0.voteAverage >= 7)
         })
-        let viewModel = MovieList.List.ViewModel.Success(movieList: movieList)
-        viewController?.getUpcomingMoviesSuccess(viewModel: viewModel)
+        let viewModel = MovieSearch.Search.ViewModel.Success(movieList: movieList)
+        viewController?.searchMovieSuccess(viewModel: viewModel)
     }
     
     private func buildMovieDescription(movie: MovieListModel) -> String {
@@ -51,14 +50,14 @@ class MovieListPresenter: MovieListPresentationLogic {
         return description
     }
     
-    func dismissLoading(response: MovieList.List.Response.DismissLoading) {
-        let viewModel = MovieList.List.ViewModel.DismissLoading()
+    func dismissLoading(response: MovieSearch.Search.Response.DismissLoading) {
+        let viewModel = MovieSearch.Search.ViewModel.DismissLoading()
         viewController?.dismissLoading(viewModel: viewModel)
     }
     
-    func getUpcomingMoviesFailure(response: MovieList.List.Response.Failure) {
-        let viewModel = MovieList.List.ViewModel.Failure(message: response.error.localizedDescription)
-        viewController?.getUpcomingMoviesFailure(viewModel: viewModel)
+    func searchMovieFailure(response: MovieSearch.Search.Response.Failure) {
+        let viewModel = MovieSearch.Search.ViewModel.Failure(message: response.error.localizedDescription)
+        viewController?.searchMovieFailure(viewModel: viewModel)
     }
     
 }

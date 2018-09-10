@@ -15,6 +15,11 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var moviePosterHeadingView: MoviePosterHeadingView!
     @IBOutlet weak var moviewOverviewLabel: UILabel!
     
+    @IBAction func shareButtonAction(_ sender: Any) {
+        let request = MovieDetail.Share.Request()
+        interactor?.shareMovie(request: request)
+    }
+    
     // Var's
     var interactor: MovieDetailBusinessLogic?
     var router: (NSObjectProtocol & MovieDetailRoutingLogic & MovieDetailDataPassing)?
@@ -43,6 +48,7 @@ class MovieDetailViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        showLoading(delayed: 0.1)
         let request = MovieDetail.Get.Request()
         interactor?.getMovieDetails(request: request)
     }

@@ -19,16 +19,16 @@ extension MovieListViewController: MovieListDisplayLogic {
     func getUpcomingMoviesSuccess(viewModel: MovieList.List.ViewModel.Success) {
         self.movieList = viewModel.movieList
         tableView.reloadData()
+        hideLoading()
     }
     
     func dismissLoading(viewModel: MovieList.List.ViewModel.DismissLoading) {
+        hideLoading()
     }
     
     func getUpcomingMoviesFailure(viewModel: MovieList.List.ViewModel.Failure) {
-        let alert = UIAlertController(title: "Error", message: viewModel.message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "ok", style: .default, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+        showAlert(message: viewModel.message)
+        hideLoading()
     }
     
 }

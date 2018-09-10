@@ -11,7 +11,11 @@ import PromiseKit
 
 class MovieListWorker {
 
-    func getUpcomingMovies(page: Int?) -> Promise<MovieListResultsPageModel> {
+    func updateGenreList() -> Promise<Void> {
+        return MoviesAPIService.getGenreList()
+    }
+    
+    func getUpcomingMovies(page: Int) -> Promise<MovieListResultsPageModel> {
         return MoviesAPIService.getUpcomingMovies(page: page)
     }
     

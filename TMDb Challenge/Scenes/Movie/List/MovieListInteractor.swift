@@ -23,9 +23,9 @@ class MovieListInteractor: MovieListBusinessLogic, MovieListDataStore {
     var presenter: MovieListPresentationLogic?
     let worker = MovieListWorker()
     
-    var movieList = [MovieListModel]()
-    var nextPage: Int?
-    var isFetching = false
+    internal(set) var movieList = [MovieListModel]()
+    internal var nextPage: Int?
+    private var isFetching = false
     
     func getUpcomingMovies(request: MovieList.List.Request) {
         guard !isFetching else {
@@ -50,7 +50,9 @@ class MovieListInteractor: MovieListBusinessLogic, MovieListDataStore {
         
         let requestedPage = nextPage ?? 1
         isFetching = true
-        worker.getUpcomingMovies(page: requestedPage)
+        worker
+            .updateGenreList()
+            .then { self.worker.getUpcomingMovies(page: requestedPage) }
             .done { (result) in
                 if requestedPage + 1 <= result.totalPages {
                     self.nextPage = requestedPage + 1

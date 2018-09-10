@@ -24,4 +24,18 @@ class DecodableParser<T: Decodable> {
         }
     }
     
+    static func parse(list: Any?) throws -> [T] {
+        guard let safeList = list as? [[String: Any]] else {
+            throw NSError(domain: "DecodableParser", code: -1, userInfo: [NSLocalizedDescriptionKey: "Can't parse nil list"])
+        }
+        return try safeList.compactMap({
+            do {
+                return try DecodableParser.parse(dict: $0)
+            }
+            catch let error {
+                throw error
+            }
+        })
+    }
+    
 }

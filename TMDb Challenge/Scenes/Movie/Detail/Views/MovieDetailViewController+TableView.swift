@@ -15,7 +15,9 @@ extension MovieDetailViewController: UITableViewDataSource, UITableViewDelegate 
         tableView.separatorColor = UIColor.tmdb.secondaryDark
         tableView.isScrollEnabled = false
         tableView.register(MovieInfoTableViewCell.self, forCellReuseIdentifier: MovieInfoTableViewCell.reuseIdentifier)
-        tableView.rowHeight = 50
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -35,6 +35,7 @@ class MovieListViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        showLoading(delayed: 0.1)
         let request = MovieList.List.Request(mode: .load)
         interactor?.getUpcomingMovies(request: request)
     }

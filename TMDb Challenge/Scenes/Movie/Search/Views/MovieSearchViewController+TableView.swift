@@ -1,22 +1,21 @@
 //
-//  MovieListViewController+TableView.swift
+//  MovieSearchViewController+TableView.swift
 //  TMDb Challenge
 //
-//  Created by Gabriel Minucci on 08/09/18.
+//  Created by Gabriel Minucci on 09/09/18.
 //  Copyright © 2018 Minucci. All rights reserved.
 //
 
 import UIKit
-import Kingfisher
 
-extension MovieListViewController {
+extension MovieSearchViewController {
     
     func setupTableView() {
         tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: MovieListTableViewCell.reuseIdentifier)
+        tableView.tableFooterView = UIView()
         tableView.separatorColor = UIColor.tmdb.secondaryDark
         tableView.backgroundColor = UIColor.tmdb.primaryDark
         tableView.rowHeight = tableView.bounds.size.width/2
-        tableView.tableFooterView = UIView()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -46,8 +45,8 @@ extension MovieListViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == movieList.count - 5 {
-            let request = MovieList.List.Request(mode: .next)
-            interactor?.getUpcomingMovies(request: request)
+            let request = MovieSearch.Search.Request(mode: .next, query: nil)
+            interactor?.searchMovie(request: request)
         }
     }
     
