@@ -26,7 +26,8 @@ class MovieListPresenter: MovieListPresentationLogic {
             MovieList.List.ViewModel.MovieViewModel(
                 posterImageURL: MoviesAPIService.buildImageURL(path: $0.posterPath),
                 title: $0.title,
-                description: buildMovieDescription(movie: $0))
+                description: buildMovieDescription(movie: $0),
+                starred: $0.voteAverage >= 7)
         })
         let viewModel = MovieList.List.ViewModel.Success(movieList: movieList)
         viewController?.getUpcomingMoviesSuccess(viewModel: viewModel)

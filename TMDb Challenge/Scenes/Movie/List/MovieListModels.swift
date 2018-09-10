@@ -33,6 +33,7 @@ enum MovieList {
                 let posterImageURL: URL?
                 let title: String?
                 let description: String?
+                let starred: Bool
             }
             struct Success {
                 let movieList: [MovieViewModel]

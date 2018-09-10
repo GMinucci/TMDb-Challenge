@@ -39,6 +39,7 @@ extension MovieListViewController {
         cell.movieDataView.movieTitleLabel.text = movie.title
         cell.movieDataView.movieDescriptionLabel.text = movie.description
         cell.movieDataView.posterImageView.kf.setImage(with: movie.posterImageURL)
+        cell.starredImageView.isHidden = !movie.starred
         
         return cell
     }
